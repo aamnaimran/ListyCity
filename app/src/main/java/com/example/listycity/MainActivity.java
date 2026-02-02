@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> dataList;
     EditText addCityField;
     Button addCityButton;
+    Button deleteCityButton;
+    int selectedPosition = -1;
 
 
     @Override
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         cityList = findViewById(R.id.city_list);
         addCityField = findViewById(R.id.add_city_field);
         addCityButton = findViewById(R.id.add_city_button);
+        deleteCityButton = findViewById(R.id.delete_city_button);
 
         String [] cities = {"Edmonton", "Vancouver", "Moscow", "Sydney", "Berlin", "Vienna", "Tokyo", "Beijing", "Osaka", "New Delhi", "Lahore", "Rome", "Athens", "Mykonos"};
         dataList = new ArrayList<>();
@@ -54,10 +57,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //delete cities; long click
-        cityList.setOnItemLongClickListener((adapterView, view, i, l) -> {
-            dataList.remove(i); // Remove item at the clicked index
-            cityAdapter.notifyDataSetChanged(); // refresh UI so change is reflected
-            return true;
+        deleteCityButton.setOnClickListener(v -> {
+            if (selectedPosition != -1 && selectedPosition < dataList.size()) {
+                dataList.remove(selectedPosition);
+                cityAdapter.notifyDataSetChanged();
+                selectedPosition = -1; // Reset selection
+            }
         });
 
 

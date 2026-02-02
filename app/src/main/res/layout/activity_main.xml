@@ -8,7 +8,6 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -22,9 +21,19 @@
 
         <Button
             android:id="@+id/add_city_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Add City" />
+            android:layout_weight="1"
+            android:text="Add City"
+            android:layout_marginEnd="4dp"/>
+
+        <Button
+            android:id="@+id/delete_city_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete City"
+            android:layout_marginStart="4dp"/>
 
         <ListView
             android:id="@+id/city_list"
